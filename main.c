@@ -6,7 +6,7 @@
 /*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:33:35 by guortun-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:35:47 by guortun-         ###   ########.fr       */
+/*   Updated: 2023/10/04 08:05:04 by guortun-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	child_process(char **argv, char **envp, int *fd)
 	close(fd[0]);
 	execute(argv[2], envp);
 }
+
 void	parent_process(char **argv, char **envp, int *fd)
 {
 	int	outfile;
@@ -39,10 +40,11 @@ void	parent_process(char **argv, char **envp, int *fd)
 	close(fd[1]);
 	execute(argv[3], envp);
 }
+
 int	main(int argc, char **argv, char **envp)
 {
-	int fd[2];
-	pid_t pid_1;
+	int		fd[2];
+	pid_t	pid_1;
 
 	if (argc == 5)
 	{
