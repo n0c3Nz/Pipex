@@ -6,7 +6,7 @@
 /*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:52:36 by guortun-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:54:01 by guortun-         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:45:00 by guortun-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,42 @@ void	execute(char *argv, char **envp)
 
 	i = 0;
 	cmd = ft_split(argv, ' ');
-	path = find_path(cmd[0], envp);
-	if (!path)
+	if (is_absolute_path(cmd[0]) == 0)
+		path = cmd[0];
+	else
 	{
-		while (cmd[i++])
-			free(cmd[i]);
-		free(cmd);
-		error();
+		path = find_path(cmd[0], envp);
+		if (!path)
+		{
+			while (cmd[i++])
+				free(cmd[i]);
+			free(cmd);
+			error("Command not found in path");
+		}
 	}
 	if (execve(path, cmd, envp) == -1)
-		error();
+		error("Error executing command");
 }
 
-void	error(void)
+void	error(char *str)
 {
-	perror("\033[31mError");
+	char	error[256];
+
+	ft_strlcpy(error, "\033[31mError\033[0;39m: ", 256);
+	ft_strlcat(error, str, 256);
+	ft_strlcat(error, "\n", 256);
+	ft_putstr_fd(error, 2);
 	exit(EXIT_FAILURE);
+}
+
+int	is_absolute_path(char *cmd)
+{
+	if (cmd[0] == '/' || cmd[0] == '.')
+	{
+		if (access(cmd, X_OK) == 0)
+			return (0);
+		else
+			error("Command is not executable or doesn't exist");
+	}
+	return (1);
 }

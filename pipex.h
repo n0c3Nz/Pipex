@@ -6,7 +6,7 @@
 /*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:54:32 by guortun-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:55:16 by guortun-         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:14:17 by guortun-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # include <unistd.h>
 
 /* Mandatory functions */
-void	error(void);
+void	error(char *str);
+int		is_absolute_path(char *cmd);
 char	*find_path(char *cmd, char **envp);
 int		get_next_line(char **line);
 void	execute(char *argv, char **envp);
