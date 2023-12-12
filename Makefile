@@ -6,14 +6,14 @@
 #    By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 19:21:04 by guortun-          #+#    #+#              #
-#    Updated: 2023/12/12 20:27:24 by guortun-         ###   ########.fr        #
+#    Updated: 2023/12/12 20:56:14 by guortun-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -L./src/libft -lft -L./src/printf -lftprintf
 
 SRC = main.c ./include/utils.c
