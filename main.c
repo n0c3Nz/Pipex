@@ -6,7 +6,7 @@
 /*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:33:35 by guortun-          #+#    #+#             */
-/*   Updated: 2023/12/12 18:44:56 by guortun-         ###   ########.fr       */
+/*   Updated: 2023/12/21 23:52:10 by guortun-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	main(int argc, char **argv, char **envp)
 			child_process(argv, envp, fd);
 		if (pid_1 > 0)
 		{
-			waitpid(pid_1, NULL, 0);
 			parent_process(argv, envp, fd);
 		}
 	}
@@ -65,3 +64,9 @@ int	main(int argc, char **argv, char **envp)
 		error("Wrong number of arguments");
 	return (0);
 }
+// Unit tests
+// ./pipex infile "ls -l" "wc -l" outfile
+// ./pipex infile "grep a1" "wc -w" outfile
+// ./pipex infile "sleep 5" "ls -l" outfile
+// waitpid(pid_1, NULL, 0);
+// Para poder probar AWK -> export a='$1'.

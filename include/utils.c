@@ -6,7 +6,7 @@
 /*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:52:36 by guortun-          #+#    #+#             */
-/*   Updated: 2023/12/12 20:45:00 by guortun-         ###   ########.fr       */
+/*   Updated: 2023/12/21 23:26:57 by guortun-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	execute(char *argv, char **envp)
 	char	*path;
 
 	i = 0;
-	cmd = ft_split(argv, ' ');
+	cmd = split_string(argv, ' ');
 	if (is_absolute_path(cmd[0]) == 0)
 		path = cmd[0];
 	else

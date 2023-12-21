@@ -5,18 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/19 19:21:04 by guortun-          #+#    #+#              #
-#    Updated: 2023/12/12 20:56:14 by guortun-         ###   ########.fr        #
+#    Created: 2023/12/21 23:27:42 by guortun-          #+#    #+#              #
+#    Updated: 2023/12/21 23:30:04 by guortun-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME = pipex
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 LFLAGS = -L./src/libft -lft -L./src/printf -lftprintf
 
-SRC = main.c ./include/utils.c
+SRC = main.c ./include/utils.c ./include/splitter_1.c ./include/splitter_2.c
 
 OBJ = $(SRC:.c=.o)
 
