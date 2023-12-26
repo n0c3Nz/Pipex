@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: guortun- <guortun-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:52:36 by guortun-          #+#    #+#             */
-/*   Updated: 2023/12/21 23:26:57 by guortun-         ###   ########.fr       */
+/*   Updated: 2023/12/26 16:46:21 by guortun-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ char	*find_path(char *cmd, char **envp)
 	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++;
 	paths = ft_split(envp[i] + 5, ':');
-	i = 0;
-	while (paths[i])
+	i = -1;
+	while (paths[++i])
 	{
 		part_path = ft_strjoin(paths[i], "/");
 		path = ft_strjoin(part_path, cmd);
@@ -32,11 +32,11 @@ char	*find_path(char *cmd, char **envp)
 		if (access(path, F_OK) == 0)
 			return (path);
 		free(path);
-		i++;
 	}
-	i = 0;
-	while (paths[i++])
+	i = -1;
+	while (paths[++i])
 		free(paths[i]);
+	free(paths[i]);
 	free(paths);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: guortun- <guortun-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:54:32 by guortun-          #+#    #+#             */
-/*   Updated: 2023/12/21 23:51:35 by guortun-         ###   ########.fr       */
+/*   Updated: 2023/12/26 16:38:40 by guortun-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 
 /* Mandatory functions */
+int		is_path_in_env(char **envp);
 void	error(char *str);
 int		is_absolute_path(char *cmd);
 char	*find_path(char *cmd, char **envp);

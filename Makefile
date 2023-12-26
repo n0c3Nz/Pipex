@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+         #
+#    By: guortun- <guortun-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/21 23:27:42 by guortun-          #+#    #+#              #
-#    Updated: 2023/12/21 23:30:04 by guortun-         ###   ########.fr        #
+#    Updated: 2023/12/26 16:45:00 by guortun-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = pipex
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -L./src/libft -lft -L./src/printf -lftprintf
 
 SRC = main.c ./include/utils.c ./include/splitter_1.c ./include/splitter_2.c
