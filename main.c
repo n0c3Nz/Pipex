@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guortun- <guortun-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:33:35 by guortun-          #+#    #+#             */
-/*   Updated: 2023/12/26 17:08:23 by guortun-         ###   ########.fr       */
+/*   Updated: 2024/01/02 02:04:58 by guortun-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int	main(int argc, char **argv, char **envp)
 	int		fd[2];
 	pid_t	pid_1;
 
-	if (!(is_path_in_env(envp)))
-		error("No PATH env detected.");
 	if (argc == 5)
 	{
 		if (pipe(fd) == -1)

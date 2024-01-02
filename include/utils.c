@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guortun- <guortun-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:52:36 by guortun-          #+#    #+#             */
-/*   Updated: 2023/12/26 16:46:21 by guortun-         ###   ########.fr       */
+/*   Updated: 2024/01/02 02:05:56 by guortun-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	execute(char *argv, char **envp)
 	cmd = split_string(argv, ' ');
 	if (is_absolute_path(cmd[0]) == 0)
 		path = cmd[0];
+	else if (!(is_path_in_env(envp)))
+		error("Please use only absolute routes (No PATH env detected)");
 	else
 	{
 		path = find_path(cmd[0], envp);
