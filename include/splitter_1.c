@@ -1,21 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   splitter_1.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 22:14:38 by guortun-          #+#    #+#             */
-/*   Updated: 2023/12/21 23:50:19 by guortun-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../pipex.h"
-
 char	**allocate_memory(int count)
 {
 	char	**tokens;
-
 	tokens = (char **)malloc(count * sizeof(char *));
 	if (tokens == NULL)
 	{
@@ -24,13 +10,11 @@ char	**allocate_memory(int count)
 	}
 	return (tokens);
 }
-
 char	*copy_token(const char *str, int start_index, int token_len)
 {
 	char	*token;
 	int		i;
 	char	*tmp;
-
 	token = (char *)malloc((token_len + 1) * sizeof(char));
 	if (token == NULL)
 	{
@@ -48,7 +32,6 @@ char	*copy_token(const char *str, int start_index, int token_len)
 	free(token);
 	return (tmp);
 }
-
 int	char_compare(char c, int i, int j)
 {
 	if (c == '\'')
@@ -56,7 +39,6 @@ int	char_compare(char c, int i, int j)
 	else
 		return (i);
 }
-
 int	delimiter_compare(char c, char delimiter, int count)
 {
 	if (c == delimiter)
@@ -64,14 +46,12 @@ int	delimiter_compare(char c, char delimiter, int count)
 	else
 		return (count);
 }
-
 int	count_tokens(const char *str, char delimiter)
 {
 	int	str_length;
 	int	count;
 	int	i;
 	int	j;
-
 	i = 0;
 	count = 1;
 	str_length = strlen(str);

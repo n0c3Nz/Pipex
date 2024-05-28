@@ -1,24 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: guortun- <guortun-@student.42madrid.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 18:52:36 by guortun-          #+#    #+#             */
-/*   Updated: 2024/01/02 02:05:56 by guortun-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../pipex.h"
-
 char	*find_path(char *cmd, char **envp)
 {
 	char	**paths;
 	char	*path;
 	int		i;
 	char	*part_path;
-
 	i = 0;
 	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++;
@@ -40,13 +26,11 @@ char	*find_path(char *cmd, char **envp)
 	free(paths);
 	return (0);
 }
-
 void	execute(char *argv, char **envp)
 {
 	char	**cmd;
 	int		i;
 	char	*path;
-
 	i = 0;
 	cmd = split_string(argv, ' ');
 	if (is_absolute_path(cmd[0]) == 0)
@@ -67,18 +51,15 @@ void	execute(char *argv, char **envp)
 	if (execve(path, cmd, envp) == -1)
 		error("Error executing command");
 }
-
 void	error(char *str)
 {
 	char	error[256];
-
 	ft_strlcpy(error, "\033[31mError\033[0;39m: ", 256);
 	ft_strlcat(error, str, 256);
 	ft_strlcat(error, "\n", 256);
 	ft_putstr_fd(error, 2);
 	exit(EXIT_FAILURE);
 }
-
 int	is_absolute_path(char *cmd)
 {
 	if (cmd[0] == '/' || cmd[0] == '.')
